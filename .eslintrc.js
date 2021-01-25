@@ -23,6 +23,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'no-use-before-define': 'off',
     'generator-star-spacing': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'multiline-ternary': 'off'
   }
 }

@@ -8,12 +8,13 @@ import {
   ErrorMessage,
   PerishableLabelControl
 } from './styles'
-import { InputAdornment } from '@material-ui/core'
+import { CircularProgress, InputAdornment } from '@material-ui/core'
 import Navbar from '../../components/Navbar'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { addRequest } from '../../store/modules/products/actions'
 import { useHistory } from 'react-router-dom'
+import { useSafeSelector } from '../../hooks/useSafeSelector'
 
 interface IForm {
   name: string
@@ -28,6 +29,7 @@ const Add: React.FC = () => {
   const { control, handleSubmit } = useForm()
   const dispatch = useDispatch()
   const history = useHistory()
+  const products = useSafeSelector(state => state.products)
   const [error, setError] = useState('')
 
   const onSubmit = useCallback(
@@ -128,8 +130,13 @@ const Add: React.FC = () => {
           }}
         />
 
-        <Button type="submit" variant="contained" color="primary">
-          Adicionar
+        <Button
+          disabled={products.loading}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          {products.loading ? <CircularProgress size={24} /> : 'Adicionar'}
         </Button>
 
         <ErrorMessage>{error}</ErrorMessage>

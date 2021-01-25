@@ -8,7 +8,7 @@ import {
   ErrorMessage,
   PerishableLabelControl
 } from './styles'
-import { InputAdornment } from '@material-ui/core'
+import { CircularProgress, InputAdornment } from '@material-ui/core'
 import Navbar from '../../components/Navbar'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
@@ -30,7 +30,7 @@ const Update: React.FC = () => {
   const history = useHistory()
   const { id } = useParams<{ id: string }>()
 
-  const { products } = useSafeSelector(state => state.products)
+  const { products, loading } = useSafeSelector(state => state.products)
   const product = products.filter(product => product._id === id)[0]
 
   const [error, setError] = useState('')
@@ -140,7 +140,7 @@ const Update: React.FC = () => {
         />
 
         <Button type="submit" variant="contained" color="primary">
-          Atualizar
+          {loading ? <CircularProgress size={24} /> : 'Adicionar'}
         </Button>
 
         <ErrorMessage>{error}</ErrorMessage>

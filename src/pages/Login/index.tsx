@@ -1,6 +1,7 @@
+/* eslint-disable multiline-ternary */
 import React, { useCallback } from 'react'
 
-import { InputAdornment } from '@material-ui/core'
+import { InputAdornment, CircularProgress } from '@material-ui/core'
 
 import { EmailOutlined, LockOutlined } from '@material-ui/icons'
 
@@ -65,8 +66,17 @@ const Login: React.FC = () => {
           label="SENHA"
         />
 
-        <Button variant="contained" color="primary" type="submit">
-          ENTRAR
+        <Button
+          disabled={auth.loading}
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          {auth.loading ? (
+            <CircularProgress color="primary" size={24} />
+          ) : (
+            'ENTRAR'
+          )}
         </Button>
 
         <ErrorMessage>{auth.error}</ErrorMessage>
