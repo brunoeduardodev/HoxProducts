@@ -29,7 +29,7 @@ type AddResponse = AxiosResponse<ADD_SUCCESSFUL['payload']['product']>
 
 type UpdateResponse = AxiosResponse<UPDATE_SUCCESSFUL['payload']['product']>
 
-type DeleteResponse = AxiosResponse<DELETE_SUCCESSFUL['payload']['_id']>
+type DeleteResponse = AxiosResponse<DELETE_SUCCESSFUL['payload']>
 
 function convertProduct(product: Product): Product {
   return {
@@ -95,11 +95,9 @@ function* update({ payload }: ReturnType<typeof updateRequest>) {
 
 function* deleteReq({ payload }: ReturnType<typeof deleteRequest>) {
   const { id } = payload
-
   try {
     const response: DeleteResponse = yield call(api.delete, `/products/${id}`)
-
-    yield put(deleteSuccessful({ _id: response.data }))
+    yield put(deleteSuccessful({ _id: response.data._id }))
   } catch (error) {
     const errorMessage = error.response.data.error
 

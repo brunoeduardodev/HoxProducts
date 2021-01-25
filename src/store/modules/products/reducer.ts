@@ -84,7 +84,6 @@ const reducer: Reducer<Products, ActionsTypes> = (
 
     case ProductsTypes.DELETE_SUCCESSFUL: {
       const payload = action.payload as DELETE_SUCCESSFUL['payload']
-
       const newProducts = state.products.filter(product => {
         if (product._id !== payload._id) return product
         return undefined

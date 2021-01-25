@@ -20,7 +20,7 @@ const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/add" exact component={Add} />
-      <Route path="/update" exact component={Update} />
+      <Route path="/update/:id" exact component={Update} />
       <Route path="/" component={Index} />
     </Switch>
   )
