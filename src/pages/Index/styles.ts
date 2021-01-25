@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TableContainer, Button } from '@material-ui/core'
-import { Edit, Delete, Refresh } from '@material-ui/icons'
+import { Edit, Delete } from '@material-ui/icons'
 
 export const Container = styled.div`
   display: flex;
@@ -20,7 +20,9 @@ export const TablePanel = styled(TableContainer)`
   background-color: #fff;
 `
 
-export const EditIcon = styled(Edit)``
+export const EditIcon = styled(Edit)`
+  cursor: pointer;
+`
 
 export const RemoveIcon = styled(Delete).attrs({
   htmlColor: '#F00'
@@ -28,8 +30,6 @@ export const RemoveIcon = styled(Delete).attrs({
   cursor: pointer;
   margin-left: 8px;
 `
-
-export const RefreshIcon = styled(Refresh)``
 
 export const AddButton = styled(Button)`
   display: flex;

@@ -187,15 +187,15 @@ const Index: React.FC = () => {
               <TableRow key={product._id}>
                 <TableCell align="left">{product.name}</TableCell>
                 <TableCell align="right">
-                  {product.productionDate.toDateString()}
+                  {product.productionDate.toISOString().slice(0, 10)}
                 </TableCell>
                 <TableCell align="left">
                   <Checkbox checked={product.isPerishable} />
                 </TableCell>
                 <TableCell align="right">
                   {product.expirationDate
-                    ? product.expirationDate.toDateString()
-                    : '--/--/--'}
+                    ? product.expirationDate.toISOString().slice(0, 10)
+                    : '--------'}
                 </TableCell>
                 <TableCell align="right">
                   R${product.price.toFixed(2)}

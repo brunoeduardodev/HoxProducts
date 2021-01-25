@@ -4,10 +4,11 @@ import { AppBar, Toolbar, Button } from '@material-ui/core'
 import { Title } from './styles'
 import { useDispatch } from 'react-redux'
 import { signOut } from '../../store/modules/auth/actions'
+import { useHistory } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch()
-
+  const history = useHistory()
   const handleLogout = useCallback(() => {
     dispatch(signOut())
   }, [])
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Title>Hox Products</Title>
+        <Title onClick={() => history.push('/')}>Hox Products</Title>
         <Button onClick={handleLogout} color="inherit">
           Logout
         </Button>
