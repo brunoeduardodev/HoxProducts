@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TableContainer, Button } from '@material-ui/core'
+import { TableContainer, Button, Table as MTable } from '@material-ui/core'
 import { Edit, Delete } from '@material-ui/icons'
 
 export const Container = styled.div`
@@ -18,6 +18,12 @@ export const Container = styled.div`
 export const TablePanel = styled(TableContainer)`
   width: 80vw;
   background-color: #fff;
+  overflow-x: scroll;
+
+  @media (max-width: 1024px){
+    width: 100vw;
+  }
+}
 `
 
 export const EditIcon = styled(Edit)`
@@ -36,4 +42,12 @@ export const AddButton = styled(Button)`
   flex: auto;
   padding: 6px 48px;
   margin: 8px 8px 8px auto;
+
+  @media (max-width: 1024px) {
+    margin: 8px auto;
+  }
+`
+
+export const Table = styled(MTable)`
+  min-width: 800px;
 `

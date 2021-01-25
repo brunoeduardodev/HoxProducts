@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import {
-  Table,
   TableBody,
   TableCell,
   TableHead,
@@ -16,7 +15,8 @@ import {
   TablePanel,
   EditIcon,
   RemoveIcon,
-  AddButton
+  AddButton,
+  Table
 } from './styles'
 import { useSafeSelector } from '../../hooks/useSafeSelector'
 import { Product } from '../../store/modules/products/types'

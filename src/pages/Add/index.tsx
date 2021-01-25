@@ -106,6 +106,7 @@ const Add: React.FC = () => {
             name="expiration"
             label="Data de Vencimento"
             type="date"
+            rules={{ required: true }}
             InputLabelProps={{
               shrink: true
             }}

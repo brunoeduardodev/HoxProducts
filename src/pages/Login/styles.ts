@@ -30,6 +30,18 @@ export const LoginPanel = styled.form`
   flex-direction: column;
 
   padding: 24px 60px;
+
+  @media (max-width: 1024px) {
+    width: 80vw;
+  }
+
+  @media (max-width: 512px) {
+    width: 100vw;
+  }
+
+  @media (max-width: 440px) {
+    padding: 24px 8px;
+  }
 `
 
 export const Input = styled(TextField)`

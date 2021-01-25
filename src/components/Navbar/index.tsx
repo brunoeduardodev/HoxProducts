@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
       <Toolbar>
         <Title onClick={() => history.push('/')}>Hox Products</Title>
         <Button onClick={handleLogout} color="inherit">
-          Logout
+          SAIR
         </Button>
       </Toolbar>
     </AppBar>

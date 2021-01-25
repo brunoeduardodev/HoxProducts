@@ -114,6 +114,7 @@ const Update: React.FC = () => {
             control={control}
             name="expiration"
             label="Data de Vencimento"
+            rules={{ required: true }}
             type="date"
             defaultValue={product.expirationDate?.toISOString().slice(0, 10)}
             InputLabelProps={{

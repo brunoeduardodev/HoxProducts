@@ -16,10 +16,15 @@ export const Container = styled.div`
 
 export const Form = styled.form`
   width: 80vw;
+  height: 100%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   padding: 24px;
+
+  @media (max-width: 640px) {
+    width: 100vw;
+  }
 
   h1 {
     margin: 16px;
@@ -39,6 +44,7 @@ export const PerishableLabelControl = styled(FormControlLabel)`
 export const Button = styled(MButton)`
   margin-top: 32px;
   padding: 6px 48px;
+  align-self: center;
 `
 
 export const ErrorMessage = styled.span`
