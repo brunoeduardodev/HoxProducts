@@ -21,6 +21,7 @@ const reducer: Reducer<Auth, ActionsTypes> = (
 ) => {
   switch (action.type) {
     case AuthTypes.SIGN_IN_REQUEST: {
+      console.log('Fez a request')
       return {
         loading: true,
         error: '',

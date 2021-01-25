@@ -8,7 +8,7 @@ type AuthResponse = AxiosResponse<SIGN_IN_SUCCESSFUL['payload']>
 
 function* signIn({ payload }: ReturnType<typeof signInRequest>) {
   const { email, password } = payload
-
+  console.log('Chegou no sagas')
   try {
     const response: AuthResponse = yield call(api.post, 'authenticate', {
       email,
