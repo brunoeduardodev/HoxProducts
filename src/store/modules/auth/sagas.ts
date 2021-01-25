@@ -3,6 +3,7 @@ import api from '../../../services/api'
 import { signInFailed, signInRequest, signInSucessful } from './actions'
 import { AuthTypes, SIGN_IN_SUCCESSFUL } from './types'
 import { AxiosResponse } from 'axios'
+import { fetchRequest } from '../products/actions'
 
 type AuthResponse = AxiosResponse<SIGN_IN_SUCCESSFUL['payload']>
 
@@ -16,6 +17,8 @@ function* signIn({ payload }: ReturnType<typeof signInRequest>) {
     })
 
     yield put(signInSucessful({ token: response.data.token }))
+    api.defaults.headers.authorization = response.data.token
+    yield put(fetchRequest({}))
   } catch (error) {
     const errorMessage = error.response.data.error
 

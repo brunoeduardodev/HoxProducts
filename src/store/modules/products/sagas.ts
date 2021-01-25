@@ -5,6 +5,7 @@ import {
   ADD_SUCCESSFUL,
   DELETE_SUCCESSFUL,
   FETCH_SUCCESSFUL,
+  Product,
   ProductsTypes,
   UPDATE_SUCCESSFUL
 } from './types'
@@ -30,11 +31,27 @@ type UpdateResponse = AxiosResponse<UPDATE_SUCCESSFUL['payload']['product']>
 
 type DeleteResponse = AxiosResponse<DELETE_SUCCESSFUL['payload']['_id']>
 
+function convertProduct(product: Product): Product {
+  return {
+    ...product,
+    productionDate: new Date(product.productionDate),
+    expirationDate: product.expirationDate
+      ? new Date(product.expirationDate)
+      : undefined
+  }
+}
+
+function convertProducts(products: Product[]): Product[] {
+  const newProducts = products.map(product => convertProduct(product))
+
+  return newProducts
+}
+
 function* fetch() {
   try {
     const response: FetchResponse = yield call(api.get, '/products')
 
-    yield put(fetchSuccessful({ products: response.data }))
+    yield put(fetchSuccessful({ products: convertProducts(response.data) }))
   } catch (error) {
     const errorMessage = error.response.data.error
 
@@ -50,7 +67,7 @@ function* add({ payload }: ReturnType<typeof addRequest>) {
       payload.product
     )
 
-    yield put(addSuccessful({ product: response.data }))
+    yield put(addSuccessful({ product: convertProduct(response.data) }))
   } catch (error) {
     const errorMessage = error.response.data.error
 
@@ -68,7 +85,7 @@ function* update({ payload }: ReturnType<typeof updateRequest>) {
       product
     )
 
-    yield put(updateSuccessful({ product: response.data }))
+    yield put(updateSuccessful({ product: convertProduct(response.data) }))
   } catch (error) {
     const errorMessage = error.response.data.error
 
